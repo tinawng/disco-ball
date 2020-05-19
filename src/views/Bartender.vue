@@ -58,7 +58,7 @@
             </div>
           </div>
         </div>
-        <div style="height: 2vw"></div>
+        <div style="height: 3vw"></div>
         <span class="bottom-pannel-title" style="flex: 0 0 100%">Popular</span>
         <div style="height: 1vw"></div>
         <div v-for="(album, index) in filterByProduct" :key="index">
@@ -330,31 +330,31 @@ export default {
 .bottom-pannel-title {
   margin-bottom: 1vw;
 
-  line-height: 1.6vw;
-  font-size: 1.6vw;
+  line-height: 1.3vw;
+  font-size: 1.3vw;
   font-weight: 500;
 }
 
 .cover-big {
-  width: 6.5vw;
+  width: 6vw;
 
   box-shadow: 0px 18px 15px -7px rgba(0, 0, 0, 0.6),
     0px 24px 38px 3px rgba(0, 0, 0, 0.56), 0px 9px 46px 8px rgba(0, 0, 0, 0.24);
 }
 .cover-big-desc {
-  margin-left: 1.75vw;
+  margin-left: 1.5vw;
   display: flex;
   flex-direction: column;
 }
 .cover-big-text {
-  line-height: 1.6vw;
-  font-size: 1.4vw;
+  line-height: 1.3vw;
+  font-size: 1.2vw;
   font-weight: 300;
   text-transform: capitalize;
 }
 .cover-big-subtext {
-  line-height: 1.6vw;
-  font-size: 0.9vw;
+  line-height: 1.3vw;
+  font-size: 0.6vw;
   font-weight: 400;
   letter-spacing: 0.16em;
   color: #fff9;
