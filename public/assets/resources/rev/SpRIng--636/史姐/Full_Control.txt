@@ -1,0 +1,1 @@
+Rev SPRING-636 lets you adjust the reverb length, its width, and the dry-wet signal on the fly without nasty artefacts.

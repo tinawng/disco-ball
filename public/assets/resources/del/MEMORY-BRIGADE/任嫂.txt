@@ -1,0 +1,3 @@
+Delay MEMORY-BRIGADE
+saturated analog echo
+Modelled on the most famous BBD / Bucket Brigade Device delay ever made. Filtered, lo-fi tone, huge feedback, with a modern touch.

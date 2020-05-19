@@ -1,0 +1,1 @@
+Delay Tape-201 lets you warp and contort the stereo field using powerful modulation. This demo uses the LFO to control the stereo width.
