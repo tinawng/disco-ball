@@ -26,11 +26,15 @@
 
     <div style="flex: 0 0 80vw; height: 100vh; display: flex; flex-direction: column">
       <div
+        v-if="false"
         class="top-pannel"
         :style="'background-image: url(\'https://medias.arturia.net/images/products/'+ selected_product +'/large-'+selected_product+'-banner.jpg\')'"
       >
         <transition name="fade" mode="out-in">
-          <span :key="selected_product" class="top-pannel-title">{{selected_product.replace(/-/g, "").replace(/v$/, " v")}}</span>
+          <span
+            :key="selected_product"
+            class="top-pannel-title"
+          >{{selected_product.replace(/-/g, "").replace(/v$/, " v")}}</span>
         </transition>
 
         <img
@@ -38,12 +42,28 @@
           :src="'https://medias.arturia.net/images/products/'+ selected_product +'/'+selected_product+'-image.png'"
         />
       </div>
+      <AlbumTopPanel
+        class="top-pannel"
+        :style="'background-image: url(\'https://medias.arturia.net/images/products/'+ selected_product +'/large-'+selected_product+'-banner.jpg\')'"
+        :album="filterByProduct[0]"
+      ></AlbumTopPanel>
 
-      <div class="bottom-pannel acrylic blur">
+      <div v-if="panel_view == 'product'" class="bottom-pannel acrylic blur">
         <div style="display: flex">
           <div style="display: flex; flex-wrap: wrap; align-items: center">
             <span class="bottom-pannel-title" style="flex: 0 0 100%">Lastest Release</span>
-            <img class="cover-big" :src="filterByProduct[0].cover" />
+            <v-hover v-slot:default="{ hover }">
+              <div style="position: relative" @click="selectAlbum(filterByProduct[0]); panel_view = 'album'">
+                <img class="cover-big" :src="filterByProduct[0].cover" />
+                <transition name="quick-fade" mode="out-in">
+                  <v-icon
+                    v-if="hover"
+                    style="position: absolute; left: 0; height: 7vw; width: 7vw; font-size: 4vw; pointer-events: none;"
+                    color="#fffb"
+                  >mdi-play-circle-outline</v-icon>
+                </transition>
+              </div>
+            </v-hover>
             <div class="cover-big-desc">
               <span class="cover-big-text">{{filterByProduct[0].name}}</span>
               <span class="cover-big-subtext">{{filterByProduct[0].price}}</span>
@@ -51,7 +71,18 @@
           </div>
           <div style="display: flex; flex-wrap: wrap; align-items: center">
             <span class="bottom-pannel-title" style="flex: 0 0 100%">Best Seller</span>
-            <img class="cover-big" :src="filterByProduct[1].cover" />
+            <v-hover v-slot:default="{ hover }">
+              <div style="position: relative">
+                <img class="cover-big" :src="filterByProduct[1].cover" />
+                <transition name="quick-fade" mode="out-in">
+                  <v-icon
+                    v-if="hover"
+                    style="position: absolute; left: 0; height: 7vw; width: 7vw; font-size: 4vw; pointer-events: none;"
+                    color="#fffb"
+                  >mdi-play-circle-outline</v-icon>
+                </transition>
+              </div>
+            </v-hover>
             <div class="cover-big-desc">
               <span class="cover-big-text">{{filterByProduct[1].name}}</span>
               <span class="cover-big-subtext">{{filterByProduct[1].price}}</span>
@@ -62,7 +93,7 @@
         <span class="bottom-pannel-title" style="flex: 0 0 100%">Popular</span>
         <div style="height: 1vw"></div>
         <div v-for="(album, index) in filterByProduct" :key="index">
-          <div class="album-list-row">
+          <div class="album-list-row"  @click="selectAlbum(album); panel_view = 'album'">
             <img class="cover-small" :src="album.cover" />
             <span class="album-list-row-text" style="color: #fff8">{{index+1}}</span>
             <v-icon class="album-list-row-text" color="#fffd">mdi-play-outline</v-icon>
@@ -75,6 +106,11 @@
           </div>
         </div>
       </div>
+      <AlbumBottomPanel v-else-if="panel_view == 'album'" class="bottom-pannel acrylic blur" :album="selected_album">
+        <v-btn fab small color="#fffd" @click="panel_view = 'product'">
+          <v-icon color="#212121">mdi-chevron-left</v-icon>
+        </v-btn>
+      </AlbumBottomPanel>
     </div>
 
     <div class="bottom-controller">
@@ -85,13 +121,22 @@
 
 <script>
 import { utils } from "disco-puzzle";
+import AlbumTopPanel from "@/components/bartender/AlbumTopPanel.vue";
+import AlbumBottomPanel from "@/components/bartender/AlbumBottomPanel.vue";
 export default {
+  components: {
+    AlbumTopPanel,
+    AlbumBottomPanel
+  },
+
   data: () => ({
     products: [],
     types: [],
     filters: {},
     albums: [],
-    selected_product: "mini-v"
+    selected_product: "mini-v",
+    selected_album: undefined,
+    panel_view: "product"
   }),
   computed: {
     filterByProduct: function() {
@@ -212,6 +257,9 @@ export default {
     selectProduct(product) {
       this.selected_product = product;
     },
+    selectAlbum(album) {
+      this.selected_album = album;
+    },
 
     numberOfProductPreset(album) {}
   }
@@ -295,8 +343,6 @@ export default {
   display: flex;
   align-items: flex-end;
 
-  /* background: #424242; */
-  /* background-image: url("/assets/images/bartender/mini-v-banner.jpg"); */
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -312,9 +358,9 @@ export default {
 }
 .top-pannel-img {
   position: absolute;
-  width: 80vw;
-  bottom: -30vw;
-  left: 14vw;
+  width: 60vw;
+  top: 0vw;
+  right: -5vw;
 
   filter: grayscale(40%);
 }
@@ -328,7 +374,7 @@ export default {
   background: #000c;
 }
 .bottom-pannel-title {
-  margin-bottom: 1vw;
+  margin-bottom: 0.7vw;
 
   line-height: 1.3vw;
   font-size: 1.3vw;
@@ -336,10 +382,14 @@ export default {
 }
 
 .cover-big {
-  width: 6vw;
+  width: 7vw;
 
-  box-shadow: 0px 18px 15px -7px rgba(0, 0, 0, 0.6),
-    0px 24px 38px 3px rgba(0, 0, 0, 0.56), 0px 9px 46px 8px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 18px 15px -7px rgba(0, 0, 0, 0.3),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.48), 0px 9px 46px 8px rgba(0, 0, 0, 0.24);
+  transition: filter 0.305s;
+}
+.cover-big:hover {
+  filter: blur(4px);
 }
 .cover-big-desc {
   margin-left: 1.5vw;
@@ -347,14 +397,14 @@ export default {
   flex-direction: column;
 }
 .cover-big-text {
-  line-height: 1.3vw;
+  line-height: 1.4vw;
   font-size: 1.2vw;
   font-weight: 300;
   text-transform: capitalize;
 }
 .cover-big-subtext {
-  line-height: 1.3vw;
-  font-size: 0.6vw;
+  line-height: 1.4vw;
+  font-size: 0.8vw;
   font-weight: 400;
   letter-spacing: 0.16em;
   color: #fff9;
@@ -369,6 +419,12 @@ export default {
 
   display: flex;
   align-items: center;
+
+  transition: background 0.305s;
+}
+.album-list-row:hover {
+  border-radius: 6px;
+  background: #fff1;
 }
 .album-list-row-text {
   margin-left: 2vw;
@@ -411,7 +467,7 @@ export default {
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 0;
+    z-index: -1;
     opacity: 0.37;
     background: #fff2;
     background-image: url(data:image/png;base64,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);
@@ -430,9 +486,18 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.61s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.quick-fade-enter-active,
+.quick-fade-leave-active {
+  transition: opacity 0.305s;
+}
+.quick-fade-enter,
+.quick-fade-leave-to {
   opacity: 0;
 }
 </style>
