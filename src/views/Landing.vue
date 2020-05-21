@@ -1,71 +1,172 @@
 <template>
   <!-- https://fr.wiktionary.org/wiki/%E6%81%8B -->
   <div class="container-2j8y">
-    <div class="badge inset-shadow">
-      <span class="chinese-font badge-text text-shadow">恋</span>
+    <div class="panel-left">
+      <div class="badge-row">
+        <img class="badge" :src="'./assets/images/landing/badge-left.png'" />
+      </div>
+      <v-hover v-slot:default="{ hover }">
+        <div class="nav-row">
+          <transition name="fade">
+            <v-btn
+              v-if="!hover"
+              style="margin-right: 2vw"
+              outlined
+              depressed
+              fab
+              small
+              color="#424242"
+              @click="hover = !hover"
+            >
+              <v-icon>mdi-chevron-left</v-icon>
+            </v-btn>
+          </transition>
+
+          <div class="buttons-group">
+            <v-btn
+              :class="[hover ? 'button-hover' : '', 'button']"
+              large
+              outlined
+              color="#424242"
+              to="/dancefloor"
+            >dancefloor</v-btn>
+            <v-btn
+              :class="[hover ? 'button-hover' : '', 'button']"
+              large
+              outlined
+              color="#424242"
+              to="/microfreak"
+            >microfreak</v-btn>
+            <v-btn
+              :class="[hover ? 'button-hover' : '', 'button']"
+              large
+              outlined
+              color="#424242"
+              to="/solodisco"
+            >solodisco</v-btn>
+            <v-btn
+              :class="[hover ? 'button-hover' : '', 'button']"
+              large
+              outlined
+              color="#424242"
+              to="/bartender"
+            >bartender</v-btn>
+          </div>
+        </div>
+      </v-hover>
     </div>
-    <div class="buttons-group">
-      <v-btn x-large outlined color="#fd8e4b64" to="/microfreak">microfreak</v-btn>
-      <v-btn x-large outlined color="#F5005742" to="/dancefloor">dancefloor</v-btn>
-      <v-btn x-large outlined color="#21212164" to="/solodisco">solodisco</v-btn>
-      <v-btn x-large outlined color="#64AAB464" to="/bartender">bartender</v-btn>
+    <div class="panel-right">
+      <img class="badge" :src="'./assets/images/landing/badge-right.png'" />
+      <img
+        v-if="changeBG()"
+        class="bg-1"
+        :src="'./assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg'"
+      />
+      <img
+        v-else
+        class="bg-2"
+        :src="'./assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'"
+      />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    changeBG() {
+      var time = new Date();
+      return time.getHours() % 2 == 0;
+    }
+  }
+};
 </script>
 
 <style scoped>
 .container-2j8y {
   height: 100vh;
   width: 100vw;
-  padding: 5vw;
-  background: #f5f5f5;
-  user-select: none;
 
   display: flex;
-  /* justify-content: space-evenly; */
+}
+
+.panel-left {
+  width: 25vw;
+  background-color: #fff;
+  z-index: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.panel-right {
+  flex: 1 1 67vw;
+  display: flex;
+  justify-content: flex;
+}
+
+.badge-row {
+  height: 35vh;
+
+  flex: 0 1 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.badge {
+  margin-top: 1.5vh;
+  height: 33vh;
+  opacity: 0.86;
+  z-index: 1;
+}
+
+.nav-row {
+  height: 65vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
-
-.badge {
-  height: 32vw;
-  width: 50vw;
-  border-radius: 3vw;
-  text-align: center;
-  line-height: 30vw;
-}
-.badge-text {
-  font-size: 25vw;
-  color: #f3f3f3;
-}
-
 .buttons-group {
-  width: 80%;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+}
+.button {
+  margin: 1vmin;
+  padding: 0px !important;
+  width: 0px;
+  min-width: 0px !important;
+  overflow: hidden;
+
+  transition: all 1.61s;
+}
+.button-hover {
+  width: 200px;
 }
 
-.theme--light.v-btn:hover::before {
-  opacity: 0.8 !important;
+.bg-1 {
+  position: absolute;
+  height: 105vh;
+  right: -19vw;
+  z-index: 0;
+}
+.bg-2 {
+  position: absolute;
+  height: 105vh;
+  /* right: -12vw; */
+  left: 12vw;
+
+  z-index: 0;
 }
 
-@font-face {
-  font-family: "Noto Sans JP";
-  src: url("/assets/fonts/NotoSansJP-Bold.otf");
+.fade-leave-active {
+  transition: opacity 0.305s;
 }
-.chinese-font {
-  font-family: "Noto Sans JP";
+.fade-enter-active {
+  transition: opacity 1.61s;
 }
-.shadow {
-  box-shadow: 0.3vw 0.3vw 0.6vw #e7e7e7, -0.3vw -0.3vw 0.6vw #ffffff !important;
-}
-.inset-shadow {
-  box-shadow: inset 0.3vw 0.3vw 0.6vw #e4e4e4, inset -0.3vw -0.3vw 0.6vw #ffffff;
-}
-.text-shadow {
-  text-shadow: 0.3vw 0.3vw 0.6vw #e7e7e7, -0.3vw -0.3vw 0.6vw #ffffff;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
