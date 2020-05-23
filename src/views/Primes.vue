@@ -7,6 +7,7 @@
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="6">
             <v-card class="elevation-12">
+
               <v-toolbar :color="is_prime ? 'success' : 'primary'" dark flat>
                 <v-toolbar-title>Mersenne primes</v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -16,7 +17,7 @@
                       <v-icon>mdi-information-outline</v-icon>
                     </v-btn>
                   </template>
-                  <span>Source</span>
+                  <span>link to wiki</span>
                 </v-tooltip>
               </v-toolbar>
 
@@ -46,6 +47,7 @@
 
                 <v-expansion-panels class="my-4">
                   <v-expansion-panel>
+
                     <v-expansion-panel-header v-slot="{ open }">
                       <v-fade-transition leave-absolute>
                         <span v-if="!open">
@@ -63,6 +65,7 @@
                         </v-row>
                       </v-fade-transition>
                     </v-expansion-panel-header>
+
                     <v-expansion-panel-content>
                       <v-row justify="space-around" no-gutters>
                         <v-col cols="2" class="text-right">
@@ -79,6 +82,7 @@
                     </v-expansion-panel-content>
                   </v-expansion-panel>
                 </v-expansion-panels>
+                
               </v-card-text>
 
               <v-card-actions>
@@ -111,9 +115,7 @@ export default {
       elapsed: 0
     };
   },
-  created() {
-    // console.log("2^" + p + "-1 is " + this.compLucas(p));
-  },
+  
   methods: {
     calc() {
       if (!this.p) return
