@@ -5,6 +5,7 @@ import MicroFreak from '@/views/MicroFreak.vue'
 import SoloDisco from '@/views/SoloDisco.vue'
 import DanceFloor from '@/views/DanceFloor.vue'
 import Bartender from '@/views/Bartender.vue'
+import Primes from '@/views/Primes.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,10 @@ const routes = [
   {
     path: '/bartender',
     component: Bartender
+  },
+  {
+    path: '/primes',
+    component: Primes
   }
 ]
 
