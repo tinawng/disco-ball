@@ -1,12 +1,12 @@
 <template>
   <div
     class="container-3a8j"
-    :style="'background-image: url(\'https://medias.arturia.net/images/products/'+ selected_product +'/large-'+selected_product+'-banner.jpg\')'"
+    :style="'background-image: url(\'https://medias.arturia.net/images/products/'+ selectedProduct +'/large-'+selectedProduct+'-banner.jpg\')'"
   >
-    <img
+    <!-- <img
       class="bg-img"
-      :src="'https://medias.arturia.net/images/products/'+ selected_product +'/'+selected_product+'-image.png'"
-    />
+      :src="'https://medias.arturia.net/images/products/'+ selectedProduct +'/'+selectedProduct+'-image.png'"
+    /> -->
 
     <div class="nav acrylic blur" floating permanent>
       <v-btn icon dark>
@@ -25,92 +25,19 @@
     </div>
 
     <div style="flex: 0 0 80vw; height: 100vh; display: flex; flex-direction: column">
-      <div
-        v-if="false"
-        class="top-pannel"
-        :style="'background-image: url(\'https://medias.arturia.net/images/products/'+ selected_product +'/large-'+selected_product+'-banner.jpg\')'"
+      <ProductTopPanel v-if="panelView == 'product'" class="top-pannel" ref="top-panel"></ProductTopPanel>
+      <AlbumTopPanel v-else-if="panelView == 'album'" class="top-pannel" ref="top-panel"></AlbumTopPanel>
+
+      <ProductBottomPanel class="bottom-pannel acrylic blur" ref="bottom-panel"></ProductBottomPanel>
+
+      <!-- <AlbumBottomPanel
+        class="bottom-pannel acrylic blur"
+        :album="selected_album"
       >
-        <transition name="fade" mode="out-in">
-          <span
-            :key="selected_product"
-            class="top-pannel-title"
-          >{{selected_product.replace(/-/g, "").replace(/v$/, " v")}}</span>
-        </transition>
-
-        <img
-          class="top-pannel-img"
-          :src="'https://medias.arturia.net/images/products/'+ selected_product +'/'+selected_product+'-image.png'"
-        />
-      </div>
-      <AlbumTopPanel
-        class="top-pannel"
-        :style="'background-image: url(\'https://medias.arturia.net/images/products/'+ selected_product +'/large-'+selected_product+'-banner.jpg\')'"
-        :album="filterByProduct[0]"
-      ></AlbumTopPanel>
-
-      <div v-if="panel_view == 'product'" class="bottom-pannel acrylic blur">
-        <div style="display: flex">
-          <div style="display: flex; flex-wrap: wrap; align-items: center">
-            <span class="bottom-pannel-title" style="flex: 0 0 100%">Lastest Release</span>
-            <v-hover v-slot:default="{ hover }">
-              <div style="position: relative" @click="selectAlbum(filterByProduct[0]); panel_view = 'album'">
-                <img class="cover-big" :src="filterByProduct[0].cover" />
-                <transition name="quick-fade" mode="out-in">
-                  <v-icon
-                    v-if="hover"
-                    style="position: absolute; left: 0; height: 7vw; width: 7vw; font-size: 4vw; pointer-events: none;"
-                    color="#fffb"
-                  >mdi-play-circle-outline</v-icon>
-                </transition>
-              </div>
-            </v-hover>
-            <div class="cover-big-desc">
-              <span class="cover-big-text">{{filterByProduct[0].name}}</span>
-              <span class="cover-big-subtext">{{filterByProduct[0].price}}</span>
-            </div>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; align-items: center">
-            <span class="bottom-pannel-title" style="flex: 0 0 100%">Best Seller</span>
-            <v-hover v-slot:default="{ hover }">
-              <div style="position: relative">
-                <img class="cover-big" :src="filterByProduct[1].cover" />
-                <transition name="quick-fade" mode="out-in">
-                  <v-icon
-                    v-if="hover"
-                    style="position: absolute; left: 0; height: 7vw; width: 7vw; font-size: 4vw; pointer-events: none;"
-                    color="#fffb"
-                  >mdi-play-circle-outline</v-icon>
-                </transition>
-              </div>
-            </v-hover>
-            <div class="cover-big-desc">
-              <span class="cover-big-text">{{filterByProduct[1].name}}</span>
-              <span class="cover-big-subtext">{{filterByProduct[1].price}}</span>
-            </div>
-          </div>
-        </div>
-        <div style="height: 3vw"></div>
-        <span class="bottom-pannel-title" style="flex: 0 0 100%">Popular</span>
-        <div style="height: 1vw"></div>
-        <div v-for="(album, index) in filterByProduct" :key="index">
-          <div class="album-list-row"  @click="selectAlbum(album); panel_view = 'album'">
-            <img class="cover-small" :src="album.cover" />
-            <span class="album-list-row-text" style="color: #fff8">{{index+1}}</span>
-            <v-icon class="album-list-row-text" color="#fffd">mdi-play-outline</v-icon>
-            <span class="album-list-row-text" style="flex: 0 0 50%">{{album.name}}</span>
-            <span
-              class="album-list-row-text overline text-uppercase"
-              style="color: #fff6; padding-left: 1vmin; padding-right: 1vmin; border: thin solid; border-radius: 4px"
-            >12 of {{album.presets}} presets</span>
-            <v-icon class="album-list-row-text ml-auto" small color="#fffd">mdi-cart</v-icon>
-          </div>
-        </div>
-      </div>
-      <AlbumBottomPanel v-else-if="panel_view == 'album'" class="bottom-pannel acrylic blur" :album="selected_album">
-        <v-btn fab small color="#fffd" @click="panel_view = 'product'">
+        <v-btn fab small color="#fffd" @click="panelView = 'product'">
           <v-icon color="#212121">mdi-chevron-left</v-icon>
         </v-btn>
-      </AlbumBottomPanel>
+      </AlbumBottomPanel>-->
     </div>
 
     <div class="bottom-controller">
@@ -121,27 +48,39 @@
 
 <script>
 import { utils } from "disco-puzzle";
+import store from "@/stores/bartender.js";
 import AlbumTopPanel from "@/components/bartender/AlbumTopPanel.vue";
 import AlbumBottomPanel from "@/components/bartender/AlbumBottomPanel.vue";
+import ProductTopPanel from "@/components/bartender/ProductTopPanel.vue";
+import ProductBottomPanel from "@/components/bartender/ProductBottomPanel.vue";
 export default {
   components: {
     AlbumTopPanel,
-    AlbumBottomPanel
+    AlbumBottomPanel,
+    ProductTopPanel,
+    ProductBottomPanel
   },
 
   data: () => ({
     products: [],
     types: [],
     filters: {},
-    albums: [],
-    selected_product: "mini-v",
-    selected_album: undefined,
-    panel_view: "product"
+    store: undefined
   }),
   computed: {
+    albums() {
+      return store.state.albums;
+    },
+    panelView() {
+      return store.state.panel_view;
+    },
+    selectedProduct() {
+      return store.state.selected_product;
+    },
+
     filterByProduct: function() {
       return this.albums.filter(album =>
-        album.products.find(product => product === this.selected_product)
+        album.products.find(product => product === this.selectedProduct)
       );
     }
   },
@@ -187,7 +126,16 @@ export default {
       "lead"
     ];
 
+    this.store = store;
     this.loadAlbums();
+  },
+
+  mounted() {
+    // var p = this.$refs["bottom-panel"]
+    // console.log(p)
+    this.$refs["bottom-panel"].$el.addEventListener("scroll", () => {
+      this.shrinkTopPan();
+    });
   },
 
   methods: {
@@ -250,18 +198,25 @@ export default {
           }
         });
 
-        this.albums.push(album);
+        // this.albums.push(album);
+        store.commit("addAlbum", album);
       });
     },
 
     selectProduct(product) {
-      this.selected_product = product;
-    },
-    selectAlbum(album) {
-      this.selected_album = album;
+      store.commit("selectProduct", product);
+      store.commit("changePanelView", "product");
     },
 
-    numberOfProductPreset(album) {}
+    shrinkTopPan() {
+      if (this.$refs["bottom-panel"].$el.scrollTop > 50) {
+        this.$refs["top-panel"].$el.style.height = "26.5vh";
+        this.$refs["bottom-panel"].$el.style.height = "73.5vh";
+      } else {
+        this.$refs["top-panel"].$el.style.height = "42.5vh";
+        this.$refs["bottom-panel"].$el.style.height = "57.5vh";
+      }
+    }
   }
 };
 </script>
@@ -343,26 +298,7 @@ export default {
   display: flex;
   align-items: flex-end;
 
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.top-pannel-title {
-  line-height: 8vw;
-  font-size: 8vw;
-  font-weight: 700;
-  color: white;
-  text-transform: capitalize;
-
-  z-index: 2;
-}
-.top-pannel-img {
-  position: absolute;
-  width: 60vw;
-  top: 0vw;
-  right: -5vw;
-
-  filter: grayscale(40%);
+  transition: height 0.61s;
 }
 .bottom-pannel {
   height: 57.5vh;
@@ -372,63 +308,8 @@ export default {
 
   color: white;
   background: #000c;
-}
-.bottom-pannel-title {
-  margin-bottom: 0.7vw;
 
-  line-height: 1.3vw;
-  font-size: 1.3vw;
-  font-weight: 500;
-}
-
-.cover-big {
-  width: 7vw;
-
-  box-shadow: 0px 18px 15px -7px rgba(0, 0, 0, 0.3),
-    0px 24px 38px 3px rgba(0, 0, 0, 0.48), 0px 9px 46px 8px rgba(0, 0, 0, 0.24);
-  transition: filter 0.305s;
-}
-.cover-big:hover {
-  filter: blur(4px);
-}
-.cover-big-desc {
-  margin-left: 1.5vw;
-  display: flex;
-  flex-direction: column;
-}
-.cover-big-text {
-  line-height: 1.4vw;
-  font-size: 1.2vw;
-  font-weight: 300;
-  text-transform: capitalize;
-}
-.cover-big-subtext {
-  line-height: 1.4vw;
-  font-size: 0.8vw;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  color: #fff9;
-  text-transform: uppercase;
-}
-.cover-small {
-  width: 3vw;
-}
-
-.album-list-row {
-  margin-bottom: 1vmin;
-
-  display: flex;
-  align-items: center;
-
-  transition: background 0.305s;
-}
-.album-list-row:hover {
-  border-radius: 6px;
-  background: #fff1;
-}
-.album-list-row-text {
-  margin-left: 2vw;
-  text-transform: capitalize;
+  transition: height 0.61s;
 }
 
 .bottom-controller {
@@ -482,23 +363,6 @@ export default {
 .shadow {
   border-radius: 1px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.2);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.61s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-.quick-fade-enter-active,
-.quick-fade-leave-active {
-  transition: opacity 0.305s;
-}
-.quick-fade-enter,
-.quick-fade-leave-to {
-  opacity: 0;
 }
 </style>
 
