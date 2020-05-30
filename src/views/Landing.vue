@@ -55,18 +55,8 @@
         </div>
       </v-hover>
     </div>
-    <div class="panel-right">
+    <div class="panel-right" :style="' background-image: url(' +  [changeBG() ? './assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg' : './assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'] + ')'">
       <img class="badge" :src="'./assets/images/landing/badge-right.png'" />
-      <img
-        v-if="changeBG()"
-        class="bg-1"
-        :src="'./assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg'"
-      />
-      <img
-        v-else
-        class="bg-2"
-        :src="'./assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'"
-      />
     </div>
   </div>
 </template>
@@ -103,6 +93,10 @@ export default {
   flex: 1 1 67vw;
   display: flex;
   justify-content: flex;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .badge-row {
@@ -145,18 +139,19 @@ export default {
 }
 
 .bg-1 {
-  position: absolute;
+  /* background-image: url('./assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg'); */
+
+  /* position: absolute;
   height: 105vh;
   right: -19vw;
-  z-index: 0;
+  z-index: 0; */
 }
 .bg-2 {
-  position: absolute;
+  /* background-image: url('./assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'); */
+  /* position: absolute;
   height: 105vh;
-  /* right: -12vw; */
   left: 12vw;
-
-  z-index: 0;
+  z-index: 0; */
 }
 
 .fade-leave-active {
