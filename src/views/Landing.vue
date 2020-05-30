@@ -138,22 +138,6 @@ export default {
   width: 200px;
 }
 
-.bg-1 {
-  /* background-image: url('./assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg'); */
-
-  /* position: absolute;
-  height: 105vh;
-  right: -19vw;
-  z-index: 0; */
-}
-.bg-2 {
-  /* background-image: url('./assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'); */
-  /* position: absolute;
-  height: 105vh;
-  left: 12vw;
-  z-index: 0; */
-}
-
 .fade-leave-active {
   transition: opacity 0.305s;
 }
