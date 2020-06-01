@@ -10,26 +10,26 @@
         "slides": [
           {
             "type": "overview",
-            "imgage": "./assets/images/solodisco/eternity0.png",
+            "image": "./assets/images/solodisco/eternity0.png",
             "text": "A totally original Arturia design, Delay Eternity takes a deceptively simple digital delay and transforms it into something breathtaking."
           },
           {
             "type": "abplayer",
-            "imgage": "./assets/images/solodisco/eternity1.jpg",
+            "image": "./assets/images/solodisco/eternity1.jpg",
             "name": "granular drums",
             "desc": "Deconstruct and make a mess out of any source in real time! LFO modulations twist the delay, the fade mode keeps the pitch steady when changing delay time.",
             "audios": ["./assets/audios/solodisco/Granular_Drums.dry.mp3", "./assets/audios/solodisco/Granular_Drums.wet.mp3"]
           },
           {
             "type": "abplayer",
-            "imgage": "./assets/images/solodisco/eternity2.jpg",
+            "image": "./assets/images/solodisco/eternity2.jpg",
             "name": "repeater synth",
             "desc": "Use the powerful modulation routing to make your instruments delay or repeat only at set times in the bar, perfectly sync'd to your DAW.",
             "audios": ["./assets/audios/solodisco/Repeater_Synth.dry.mp3", "./assets/audios/solodisco/Repeater_Synth.wet.mp3"]
           },
           {
             "type": "abplayer",
-            "imgage": "./assets/images/solodisco/eternity3.jpg",
+            "image": "./assets/images/solodisco/eternity3.jpg",
             "name": "dynamic pitch guitar",
             "desc": "You can get totally bizarre, forced-pitch melodic parts using the pitch-levelling “repitch” mode, being controlled by the deep modulation. Bizarre, and hugely fun.",
             "audios": ["./assets/audios/solodisco/Dynamic_Pitch_Guitar.dry.mp3", "./assets/audios/solodisco/Dynamic_Pitch_Guitar.wet.mp3"]
