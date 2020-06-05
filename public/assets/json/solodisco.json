@@ -18,33 +18,128 @@
             "image": "./assets/images/solodisco/eternity1.jpg",
             "name": "granular drums",
             "desc": "Deconstruct and make a mess out of any source in real time! LFO modulations twist the delay, the fade mode keeps the pitch steady when changing delay time.",
-            "audios": ["./assets/audios/solodisco/Granular_Drums.dry.mp3", "./assets/audios/solodisco/Granular_Drums.wet.mp3"]
+            "audios": [
+              "./assets/audios/solodisco/Granular_Drums.dry.mp3",
+              "./assets/audios/solodisco/Granular_Drums.wet.mp3"
+            ]
           },
           {
             "type": "abplayer",
             "image": "./assets/images/solodisco/eternity2.jpg",
             "name": "repeater synth",
             "desc": "Use the powerful modulation routing to make your instruments delay or repeat only at set times in the bar, perfectly sync'd to your DAW.",
-            "audios": ["./assets/audios/solodisco/Repeater_Synth.dry.mp3", "./assets/audios/solodisco/Repeater_Synth.wet.mp3"]
+            "audios": [
+              "./assets/audios/solodisco/Repeater_Synth.dry.mp3",
+              "./assets/audios/solodisco/Repeater_Synth.wet.mp3"
+            ]
           },
           {
             "type": "abplayer",
             "image": "./assets/images/solodisco/eternity3.jpg",
             "name": "dynamic pitch guitar",
             "desc": "You can get totally bizarre, forced-pitch melodic parts using the pitch-levelling “repitch” mode, being controlled by the deep modulation. Bizarre, and hugely fun.",
-            "audios": ["./assets/audios/solodisco/Dynamic_Pitch_Guitar.dry.mp3", "./assets/audios/solodisco/Dynamic_Pitch_Guitar.wet.mp3"]
+            "audios": [
+              "./assets/audios/solodisco/Dynamic_Pitch_Guitar.dry.mp3",
+              "./assets/audios/solodisco/Dynamic_Pitch_Guitar.wet.mp3"
+            ]
           }
         ]
       },
       {
         "name": "Delay TAPE-201",
         "desc": "saturated analog echo",
-        "image": "./assets/images/solodisco/tape201.svg"
+        "image": "./assets/images/solodisco/tape201.svg",
+        "slides": [
+          {
+            "type": "overview",
+            "image": "./assets/images/solodisco/tape2010.png",
+            "text": "The most accurate model of the legendary 70s tape echo ever made, with warm saturated tone and expanded abilities."
+          }
+        ]
       },
       {
         "name": "Delay MEMORY-BRIGADE",
         "desc": "filtered analog bbd echo",
-        "image": "./assets/images/solodisco/membrig.svg"
+        "image": "./assets/images/solodisco/membrig.svg",
+        "slides": [
+          {
+            "type": "overview",
+            "image": "./assets/images/solodisco/membrig0.png",
+            "text": "Modelled on the most famous BBD / Bucket Brigade Device delay ever made. Filtered, lo-fi tone, huge feedback, with a modern touch."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "reverbs",
+    "desc": "explore space and time",
+    "products": [
+      {
+        "name": "Rev SPRING-636",
+        "desc": "snappy physical reverb",
+        "image": "./assets/images/solodisco/spring636.svg",
+        "slides": [
+          {
+            "type": "overview",
+            "image": "./assets/images/solodisco/spring6360.png",
+            "text": "Modelled on the legendary Grampian spring tank, complete with ultra-crunchy germanium preamp."
+          },
+          {
+            "type": "abplayer",
+            "image": "./assets/images/solodisco/spring6361.jpg",
+            "name": "full control",
+            "desc": "Rev SPRING-636 lets you adjust the reverb length, its width, and the dry-wet signal on the fly without nasty artefacts.",
+            "audios": [
+              "./assets/audios/solodisco/Full_Control.dry.mp3",
+              "./assets/audios/solodisco/Full_Control.wet.mp3"
+            ]
+          },
+          {
+            "type": "abplayer",
+            "image": "./assets/images/solodisco/spring6362.jpg",
+            "name": "vibrant verb",
+            "desc": "There’s something so real and physical about the sound of a spring reverb, it really brings your signal to life.",
+            "audios": [
+              "./assets/audios/solodisco/Vibrant_Verb.dry.mp3",
+              "./assets/audios/solodisco/Vibrant_Verb.wet.mp3"
+            ]
+          },
+          {
+            "type": "abplayer",
+            "image": "./assets/images/solodisco/spring6363.jpg",
+            "name": "dirty drive",
+            "desc": "If you push it hard, the recreated germanium preamp can add some of the filthiest, fuzziest distortion you’ve ever heard.",
+            "audios": [
+              "./assets/audios/solodisco/Dirty_Drive.dry.mp3",
+              "./assets/audios/solodisco/Dirty_Drive.wet.mp3"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Rev INTENSITY",
+        "desc": "futuristic digital reverb",
+        "image": "./assets/images/solodisco/intensity.svg",
+        "slides": [
+          {
+            "type": "overview",
+            "image": "./assets/images/solodisco/intensity0.png",
+            "text": "A cinematic, algorithmic reverb with synth-style features and huge modulation potential."
+          }
+        ]
+      },
+      {
+        "name": "Rev PLATE-140",
+        "desc": "vintage studio reverb",
+        "image": "./assets/images/solodisco/plate140.svg",
+        "slides": [
+          {
+            "type": "overview",
+            "image": "./assets/images/solodisco/plate1400.png",
+            "text": "A sublime, incredible usable plate reverb based on EMT’s titanic original, infused with modern features."
+          }
+        ]
       }
     ]
   }
