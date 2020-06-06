@@ -1,18 +1,14 @@
 <template>
   <!-- https://fr.wiktionary.org/wiki/%E6%81%8B -->
   <div class="container-2j8y">
-    <div class="wing wing-left chinese-font">
-      <v-btn class="shadow wing-left-btn wing-left-btn-0" depressed to="/microfreak">microfreak</v-btn>
-      <v-btn class="shadow wing-left-btn" depressed to="/solodisco">solodisco</v-btn>
-      <v-btn class="shadow wing-left-btn" depressed></v-btn>
-    </div>
     <div class="badge inset-shadow">
       <span class="chinese-font badge-text text-shadow">恋</span>
     </div>
-    <div class="wing wing-right chinese-font" zstyle="display: flex; align-content: space-between">
-      <v-btn class="shadow wing-right-btn wing-right-btn-0" depressed to="/dancefloor">dancefloor</v-btn>
-      <v-btn class="shadow wing-right-btn" depressed></v-btn>
-      <v-btn class="shadow wing-right-btn" depressed></v-btn>
+    <div class="buttons-group">
+      <v-btn x-large outlined color="#fd8e4b64" to="/microfreak">microfreak</v-btn>
+      <v-btn x-large outlined color="#F5005742" to="/dancefloor">dancefloor</v-btn>
+      <v-btn x-large outlined color="#21212164" to="/solodisco">solodisco</v-btn>
+      <v-btn x-large outlined color="#64AAB464" to="/bartender">bartender</v-btn>
     </div>
   </div>
 </template>
@@ -25,84 +21,35 @@ export default {};
 .container-2j8y {
   height: 100vh;
   width: 100vw;
+  padding: 5vw;
   background: #f5f5f5;
   user-select: none;
 
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-evenly; */
   align-items: center;
 }
 
 .badge {
-  height: 80vh;
-  width: 32vw;
+  height: 32vw;
+  width: 50vw;
   border-radius: 3vw;
   text-align: center;
-  line-height: 80vh;
+  line-height: 30vw;
 }
 .badge-text {
-  font-size: 30vw;
+  font-size: 25vw;
   color: #f3f3f3;
 }
 
-.wing {
-  height: 70vh;
-  width: 10vw;
+.buttons-group {
+  width: 80%;
   display: flex;
-  flex-flow: row wrap;
-  align-content: space-around;
+  justify-content: space-evenly;
 }
-.wing-left {
-  border-top-right-radius: 1.6vw;
-  border-bottom-right-radius: 1.6vw;
-}
-.wing-right {
-  justify-content: flex-end;
 
-  border-top-left-radius: 1.6vw;
-  border-bottom-left-radius: 1.6vw;
-}
-.wing-left-btn {
-  height: 10vh !important;
-  width: 25vw;
-  padding-left: 1.8vw !important;
-  border-radius: inherit;
-  justify-content: flex-start;
-
-  font-size: 1.5vw;
-  font-size: 1.8vh;
-  text-transform: uppercase;
-  color: #212121cc;
-
-  transition: all 1.6s;
-}
-.wing-left-btn:hover {
-  padding-left: 12vw !important;
-  letter-spacing: 0.3em;
-}
-.wing-left-btn-0:hover {
-  color: #fd8e4b;
-}
-.wing-right-btn {
-  height: 10vh !important;
-  width: 25vw;
-  padding-left: 1.8vw !important;
-  border-radius: inherit;
-  justify-content: flex-end;
-
-  font-size: 1.5vw;
-  font-size: 1.8vh;
-  text-transform: uppercase;
-  color: #212121cc;
-
-  transition: all 1.6s;
-}
-.wing-right-btn:hover {
-  padding-right: 12vw !important;
-  letter-spacing: 0.3em;
-}
-.wing-right-btn-0:hover {
-  color: #F50057;
+.theme--light.v-btn:hover::before {
+  opacity: 0.8 !important;
 }
 
 @font-face {
