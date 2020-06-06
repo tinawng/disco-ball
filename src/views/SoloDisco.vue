@@ -8,7 +8,7 @@
       <span class="view-title">Products</span>
       <span class="view-subtitle">Software Instruments</span>
     </v-row>
-    <v-row style="height: 20vw; margin: 0" v-for="family in families" :key="family.name">
+    <v-row style="height: auto; margin: 0" v-for="family in families" :key="family.name">
       <div class="card card-family">
         <span class="card-family-name">{{family.name}}</span>
         <span class="card-family-desc">{{family.desc}}</span>
@@ -133,11 +133,10 @@ export default {
 }
 
 .card {
-  height: 100%;
+  height: 20vw;
   flex: 0 0 50%;
   border: thin solid rgba(0, 0, 0, 0.12);
   background: white;
-  overflow: hidden;
 }
 .card-family {
   padding: 1.5vw;
