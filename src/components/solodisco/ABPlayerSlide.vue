@@ -11,7 +11,7 @@
       <paper-player
         height="4vw"
         width="90%"
-        :eventid="'paper-player-fx' + index"
+        :eventid="'paper-player-fx-' + title + '-' + index"
         :src="player_srcs"
         :spectrogram="true"
         :title="title.toUpperCase()"
