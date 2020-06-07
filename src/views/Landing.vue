@@ -63,6 +63,12 @@
 
 <script>
 export default {
+  created() {
+    window.onscroll = function(e) {
+      window.scrollTo(0, 0);
+    };
+  },
+
   methods: {
     changeBG() {
       var time = new Date();
