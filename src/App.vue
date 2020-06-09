@@ -17,7 +17,7 @@ export default {
       if (from.path === '/') {
         this.transitionName = 'slide';
       } else {
-        this.transitionName = 'rslide';
+        this.transitionName = 'rev-slide';
       }
     }
   }
@@ -72,22 +72,21 @@ export default {
   transition-delay: 0s;
 }
 .slide-enter {
-  transform: translateY(100%);
+  transform: translateY(100vh);
 }
 .slide-leave-to {
-  /* transform: translateY(-100%); */
   opacity: 0;
 }
 
-.rslide-enter-active,
-.rslide-leave-active {
+.rev-slide-enter-active,
+.rev-slide-leave-active {
   transition: opacity 0.809s, transform 1.414s;
   transition-delay: 0s;
 }
-.rslide-enter {
+.rev-slide-enter {
   opacity: 0;
 }
-.rslide-leave-to {
-  transform: translateY(100%);
+.rev-slide-leave-to {
+  transform: translateY(100vh);
 }
 </style>
