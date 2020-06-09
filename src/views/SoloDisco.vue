@@ -32,9 +32,38 @@
       </div>
     </v-row>
 
-    <v-dialog v-if="store.state.selected_product.slides" v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+    <v-card
+      v-if="playerComponent"
+      class="py-2 pl-4 elevation-4"
+      style="position: fixed; bottom: 4vh; right: 4vh; display: flex; align-items: center"
+    >
+      <span class="overline">{{store.state.selected_product.name}} • {{playerComponent.etc.title}}</span>
+      <player-play-btn
+        class="mx-2"
+        :eventid="playerComponent.ID"
+        height="56px"
+        color="#ffffff"
+        icon_color="#212121"
+      ></player-play-btn>
+      <!-- <v-btn class="elevation-0 mx-2" color="transparent" fab>
+        <v-icon large>mdi-play</v-icon>
+      </v-btn>-->
+    </v-card>
+
+    <v-dialog
+      v-if="store.state.selected_product.slides"
+      v-model="dialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
       <!-- CLOSE BUTTON -->
-      <v-btn class="dialog-btn-close" dark fab @click="dialog = false; window_step=0">
+      <v-btn
+        class="dialog-btn-close"
+        dark
+        fab
+        @click="dialog = false; window_step=0; getCurrentPlayers()"
+      >
         <v-icon>mdi-view-dashboard</v-icon>
       </v-btn>
       <!-- NAVIGATION BUTTONS -->
@@ -74,7 +103,7 @@
 
 <script>
 import store from "@/stores/solodisco.js";
-import { utils } from "disco-puzzle";
+import { utils, awa } from "disco-puzzle";
 import OverviewSlide from "@/components/solodisco/OverviewSlide.vue";
 import ABPlayerSlide from "@/components/solodisco/ABPlayerSlide.vue";
 export default {
@@ -87,7 +116,8 @@ export default {
     families: [],
     dialog: false,
     window_step: 0,
-    store: undefined
+    store: undefined,
+    playerComponent: undefined
   }),
 
   created() {
@@ -95,6 +125,19 @@ export default {
     this.families = utils.getJSONsync(
       "https://tinawng.github.io/assets/json/solodisco.json"
     );
+  },
+
+  methods: {
+    getCurrentPlayers() {
+      for (const key in awa.components) {
+        let component = awa.components[key];
+        if (component instanceof awa.PlayerComponent)
+          if (component.isPlaying) {
+            this.playerComponent = component;
+            return;
+          } else this.playerComponent = undefined;
+      }
+    }
   }
 };
 </script>
@@ -211,10 +254,12 @@ export default {
   z-index: 9;
 }
 
-.transition-nav-btn-enter-active, .transition-nav-btn-leave-active {
-  transition: transform .414s;
+.transition-nav-btn-enter-active,
+.transition-nav-btn-leave-active {
+  transition: transform 0.414s;
 }
-.transition-nav-btn-enter, .transition-nav-btn-leave-to{
-  transform: scale(0,0);
+.transition-nav-btn-enter,
+.transition-nav-btn-leave-to {
+  transform: scale(0, 0);
 }
 </style>
