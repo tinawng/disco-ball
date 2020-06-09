@@ -8,51 +8,93 @@
       <span class="view-title">Products</span>
       <span class="view-subtitle">Software Instruments</span>
     </v-row>
-    <v-row style="height: 20vw; margin: 0" v-for="family in families" :key="family.name">
+    <v-row style="height: auto; margin: 0" v-for="family in families" :key="family.name">
       <div class="card card-family">
         <span class="card-family-name">{{family.name}}</span>
         <span class="card-family-desc">{{family.desc}}</span>
       </div>
       <div class="card" v-for="(product, index) in family.products" :key="index">
         <v-hover class="card-product" v-slot:default="{ hover }" close-delay="200">
-          <div class="card-product" @click="dialog = true; selected_product = product">
+          <div
+            class="card-product"
+            @click="dialog = true; store.commit('selectedProduct', product);"
+          >
             <div style="flex: 0 0 50%; padding: 3vw;">
               <p class="card-product-name">{{product.name}}</p>
               <p class="card-product-desc">{{product.desc}}</p>
             </div>
-            <img
+            <div
               :class="[{'card-product-img-hover': hover}, 'card-product-img']"
-              :src="product.image"
-            />
+              :style="'background-image: url(' + product.image + ')'"
+            ></div>
           </div>
         </v-hover>
       </div>
     </v-row>
 
-    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+    <v-card
+      v-if="playerComponent"
+      class="py-2 pl-4 elevation-4"
+      style="position: fixed; bottom: 4vh; right: 4vh; display: flex; align-items: center"
+    >
+      <span class="overline">{{store.state.selected_product.name}} • {{playerComponent.etc.title}}</span>
+      <player-play-btn
+        class="mx-2"
+        :eventid="playerComponent.ID"
+        height="56px"
+        color="#ffffff"
+        icon_color="#212121"
+      ></player-play-btn>
+      <!-- <v-btn class="elevation-0 mx-2" color="transparent" fab>
+        <v-icon large>mdi-play</v-icon>
+      </v-btn>-->
+    </v-card>
+
+    <v-dialog
+      v-if="store.state.selected_product.slides"
+      v-model="dialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
       <!-- CLOSE BUTTON -->
-      <v-btn class="dialog-btn" dark fab @click="dialog = false">
+      <v-btn
+        class="dialog-btn-close"
+        dark
+        fab
+        @click="dialog = false; window_step=0; getCurrentPlayers()"
+      >
         <v-icon>mdi-view-dashboard</v-icon>
       </v-btn>
-      <!-- SLIDER -->
-      <v-window v-model="window_step" class="fixed-bar" style="height: 100%">
-        <!-- NAVIGATION BUTTONS -->
-        <v-btn dark fab @click="window_step--">
+      <!-- NAVIGATION BUTTONS -->
+      <transition name="transition-nav-btn">
+        <v-btn v-if="window_step != 0" class="dialog-btn-left" dark fab @click="window_step--">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-btn dark fab @click="window_step++">
+      </transition>
+      <transition name="transition-nav-btn">
+        <v-btn
+          v-if="window_step != store.state.selected_product.slides.length-1"
+          class="dialog-btn-right"
+          dark
+          fab
+          @click="window_step++"
+        >
           <v-icon>mdi-arrow-right</v-icon>
         </v-btn>
+      </transition>
+      <!-- SLIDER -->
+      <v-window v-model="window_step" class="fixed-bar" style="height: 100%">
         <!-- SLIDES -->
         <v-window-item
-          v-for="(slide, index) in selected_product.slides"
-          :key="index"
+          v-for="(slide, index) in store.state.selected_product.slides"
+          :key="slide.image"
           :value="index"
           style="height: 100%"
         >
           <!-- v-if slide.type == ... -->
-          <OverviewSlide v-if="slide.type == 'overview'"></OverviewSlide>
-          <ABPlayerSlide v-if="slide.type == 'abplayer'"></ABPlayerSlide>
+          <OverviewSlide v-if="slide.type == 'overview'" :index="index"></OverviewSlide>
+          <ABPlayerSlide v-if="slide.type == 'abplayer'" :index="index" :key="slide.image"></ABPlayerSlide>
         </v-window-item>
       </v-window>
     </v-dialog>
@@ -60,7 +102,8 @@
 </template>
 
 <script>
-import { utils } from "disco-puzzle";
+import store from "@/stores/solodisco.js";
+import { utils, awa } from "disco-puzzle";
 import OverviewSlide from "@/components/solodisco/OverviewSlide.vue";
 import ABPlayerSlide from "@/components/solodisco/ABPlayerSlide.vue";
 export default {
@@ -71,15 +114,30 @@ export default {
 
   data: () => ({
     families: [],
-    selected_product: {},
     dialog: false,
-    window_step: 0
+    window_step: 0,
+    store: undefined,
+    playerComponent: undefined
   }),
 
   created() {
+    this.store = store;
     this.families = utils.getJSONsync(
       "https://tinawng.github.io/assets/json/solodisco.json"
     );
+  },
+
+  methods: {
+    getCurrentPlayers() {
+      for (const key in awa.components) {
+        let component = awa.components[key];
+        if (component instanceof awa.PlayerComponent)
+          if (component.isPlaying) {
+            this.playerComponent = component;
+            return;
+          } else this.playerComponent = undefined;
+      }
+    }
   }
 };
 </script>
@@ -105,24 +163,23 @@ export default {
 .view-title {
   flex: 0 0 100%;
 
-  font-size: 16vh;
-  line-height: 16vh;
+  font-size: 7.5vw;
+  line-height: 7.5vw;
   font-weight: 400;
   letter-spacing: -0.015625em;
 }
 .view-subtitle {
   padding-left: 1vmin;
-  font-size: 4vh;
-  line-height: 8vh;
+  font-size: 2vw;
+  line-height: 3.5vw;
   font-weight: 100;
 }
 
 .card {
-  height: 100%;
+  height: 20vw;
   flex: 0 0 50%;
   border: thin solid rgba(0, 0, 0, 0.12);
   background: white;
-  overflow: hidden;
 }
 .card-family {
   padding: 1.5vw;
@@ -132,15 +189,15 @@ export default {
   align-items: flex-end;
 }
 .card-family-name {
-  font-size: 16vh;
-  line-height: 22vh;
+  font-size: 7vw;
+  line-height: 10vw;
   font-weight: 300;
   letter-spacing: -0.015625em;
   text-transform: capitalize;
 }
 .card-family-desc {
-  font-size: 5.5vh;
-  line-height: 5.5vh;
+  font-size: 2.2vw;
+  line-height: 2.2vw;
   font-weight: 100;
   text-transform: uppercase;
 }
@@ -151,32 +208,58 @@ export default {
   display: flex;
 }
 .card-product-name {
-  font-size: 1.8vw;
-  line-height: 1.8vw;
+  font-size: 2.2vw;
+  line-height: 2.2vw;
 }
 .card-product-desc {
-  font-size: 1.1vw;
-  line-height: 2.5vw;
+  font-size: 1.25vw;
+  line-height: 1.8vw;
   font-weight: 100;
   text-transform: lowercase;
 }
 .card-product-img {
-  margin-left: 4vw;
+  margin-left: 5%;
 
   height: 90%;
+  width: 60%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
 
   transition-property: margin-left;
   transition-timing-function: cubic-bezier();
   transition-duration: 0.485s;
 }
 .card-product-img-hover {
-  margin-left: -4vw;
+  margin-left: -12%;
 }
 
-.dialog-btn {
+.dialog-btn-close {
   position: fixed;
   top: 4vh;
   right: 4vh;
   z-index: 9;
+}
+.dialog-btn-right {
+  position: fixed;
+  bottom: 4vh;
+  right: 4vh;
+  z-index: 9;
+}
+.dialog-btn-left {
+  position: fixed;
+  bottom: 4vh;
+  left: 4vh;
+  z-index: 9;
+}
+
+.transition-nav-btn-enter-active,
+.transition-nav-btn-leave-active {
+  transition: transform 0.414s;
+}
+.transition-nav-btn-enter,
+.transition-nav-btn-leave-to {
+  transform: scale(0, 0);
 }
 </style>

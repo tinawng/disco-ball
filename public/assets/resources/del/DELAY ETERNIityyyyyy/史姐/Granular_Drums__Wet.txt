@@ -1,1 +1,0 @@
-Deconstruct and make a mess out of any source in real time! LFO modulations twist the delay, the "fade" mode keeps the pitch steady when changing delay time.
