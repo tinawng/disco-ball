@@ -32,9 +32,22 @@
       </div>
     </v-row>
 
-    <v-card v-if="debug" class="py-2 pl-4 elevation-4" style="position: fixed; bottom: 4vh; right: 4vh">
-      <span class="overline">{{store.state.selected_product.name}}</span>
-      <v-btn class="elevation-0 mx-2" color="transparent" fab ><v-icon large>mdi-play</v-icon></v-btn>
+    <v-card
+      v-if="playerComponent"
+      class="py-2 pl-4 elevation-4"
+      style="position: fixed; bottom: 4vh; right: 4vh; display: flex; align-items: center"
+    >
+      <span class="overline">{{store.state.selected_product.name}} • {{playerComponent.etc.title}}</span>
+      <player-play-btn
+        class="mx-2"
+        :eventid="playerComponent.ID"
+        height="56px"
+        color="#ffffff"
+        icon_color="#212121"
+      ></player-play-btn>
+      <!-- <v-btn class="elevation-0 mx-2" color="transparent" fab>
+        <v-icon large>mdi-play</v-icon>
+      </v-btn>-->
     </v-card>
 
     <v-dialog
@@ -45,7 +58,12 @@
       transition="dialog-bottom-transition"
     >
       <!-- CLOSE BUTTON -->
-      <v-btn class="dialog-btn-close" dark fab @click="dialog = false; window_step=0; aled()">
+      <v-btn
+        class="dialog-btn-close"
+        dark
+        fab
+        @click="dialog = false; window_step=0; getCurrentPlayers()"
+      >
         <v-icon>mdi-view-dashboard</v-icon>
       </v-btn>
       <!-- NAVIGATION BUTTONS -->
@@ -99,27 +117,26 @@ export default {
     dialog: false,
     window_step: 0,
     store: undefined,
-    debug: false
+    playerComponent: undefined
   }),
 
   created() {
     this.store = store;
-
     this.families = utils.getJSONsync(
       "https://tinawng.github.io/assets/json/solodisco.json"
     );
   },
 
   methods: {
-    
-    aled() {
-      var ret = false
-      awa.components.forEach(component => {
-        console.log(component)
+    getCurrentPlayers() {
+      for (const key in awa.components) {
+        let component = awa.components[key];
         if (component instanceof awa.PlayerComponent)
-          ret = true;
-      });
-      this.debug = ret;
+          if (component.isPlaying) {
+            this.playerComponent = component;
+            return;
+          } else this.playerComponent = undefined;
+      }
     }
   }
 };
