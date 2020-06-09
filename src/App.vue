@@ -1,14 +1,26 @@
 <template>
   <v-app>
-    <!-- <transition name="slide" mode="out-in"> -->
+    <transition :name="transitionName" mode="out-in">
       <router-view />
-    <!-- </transition> -->
+    </transition>
   </v-app>
 </template>
 
 <script>
 export default {
-  name: "App"
+  name: 'App',
+  data () {
+    return { transitionName: null }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (from.path === '/') {
+        this.transitionName = 'slide';
+      } else {
+        this.transitionName = 'rslide';
+      }
+    }
+  }
 };
 </script>
 
@@ -54,14 +66,28 @@ export default {
   background: blue !important;
 }
 
-/* .slide-enter-active,
+.slide-enter-active,
 .slide-leave-active {
-  transition: opacity 1.61s, transform 1.61s;
+  transition: opacity 0.809s, transform 1.414s;
+  transition-delay: 0s;
 }
 .slide-enter {
-  transform: translateY(-100%);
+  transform: translateY(100%);
 }
 .slide-leave-to {
-  transform: translateY(-100%);
-} */
+  /* transform: translateY(-100%); */
+  opacity: 0;
+}
+
+.rslide-enter-active,
+.rslide-leave-active {
+  transition: opacity 0.809s, transform 1.414s;
+  transition-delay: 0s;
+}
+.rslide-enter {
+  opacity: 0;
+}
+.rslide-leave-to {
+  transform: translateY(100%);
+}
 </style>
