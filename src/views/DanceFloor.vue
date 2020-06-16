@@ -99,7 +99,12 @@
           <div class="desc-inputs">
             <v-switch v-model="show_bottom_controller" label="Show Controller" color="#424242"></v-switch>
           </div>
-          <div class="desc-code">&lt;bottom-controller&gt;&lt;/bottom-controller&gt;</div>
+          <div class="desc-code">
+            <p>&lt;paper-player&gt;eventid="paper-player-btctrl0" src="..." title="Ambient 90"&lt;/paper-player&gt;</p>
+            <p>&lt;paper-player&gt;eventid="paper-player-btctrl1" src="..." title="Scello" link&lt;/paper-player&gt;</p>
+            <p>&lt;paper-player&gt;eventid="paper-player-btctrl2" src="..." title="Tek 147" link&lt;/paper-player&gt;</p>
+            <p>&lt;bottom-controller&gt;&lt;/bottom-controller&gt;</p>
+          </div>
           <div style="height: 4vh"></div>
           <div class="desc-btns">
             <v-btn outlined @click="goToExtDoc()">see doc</v-btn>
