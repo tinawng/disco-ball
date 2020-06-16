@@ -13,7 +13,8 @@
         width="90%"
         :eventid="'paper-player-fx-' + title + '-' + index"
         :src="player_srcs"
-        :spectrogram="true"
+        spectrogram
+        spectrogramOnHover
         :title="title.toUpperCase()"
         color="#212121"
       ></paper-player>
