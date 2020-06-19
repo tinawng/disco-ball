@@ -6,8 +6,8 @@
         <span class="view-title">brute</span>
       </div>
       <div class="product-container">
-          <v-parallax :src="'./assets/images/airy/matrix.jpg'" style="height: 22vw; width: 77vw"></v-parallax>
-        <div ref="animated-row-0" class="product-row" style="margin-bottom: -28vw">
+        <v-parallax :src="'./assets/images/airy/matrix.jpg'" style="height: 22vw; width: 77vw; scroll-snap-align: start"></v-parallax>
+        <div ref="animated-row-0" class="product-row" style="margin-bottom: -28vw; scroll-snap-align: unset;">
           <div style="display: flex; flex-direction: column; align-items: center">
             <span class="product-title" style="margin-top: 4vw">The Matrix</span>
             <span class="product-subtitle" style="margin-top: 2vw">ANALOG AVANT-GARDE</span>
@@ -96,7 +96,7 @@ export default {
 <style scoped>
 .container-0y2i {
   font-family: "ZonaPro ExtraLight";
-  height: 500vh;
+  /* height: 500vh; */
 }
 
 .nav {
@@ -129,9 +129,17 @@ export default {
   animation-name: letter-spacing;
 }
 
+.product-container {
+  
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
 .product-row {
   height: 45vw;
   opacity: 0;
+
+  scroll-snap-align: start;
 }
 .product-row-animation {
   opacity: 1;
@@ -180,11 +188,11 @@ export default {
 
 @keyframes sliding-up {
   from {
-    margin-top: 6vw;
+    padding-top: 6vw;
     opacity: 0;
   }
   to {
-    margin-top: 0vw;
+    padding-top: 0vw;
     opacity: 1;
   }
 }
