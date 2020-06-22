@@ -15,9 +15,9 @@ export default {
   watch: {
     '$route' (to, from) {
       if (from.path === '/') {
-        this.transitionName = 'slide';
+        this.transitionName = 'landing-slide';
       } else {
-        this.transitionName = 'rev-slide';
+        this.transitionName = 'landing-rev-slide';
       }
     }
   }
@@ -66,27 +66,27 @@ export default {
   background: blue !important;
 }
 
-.slide-enter-active,
-.slide-leave-active {
+.landing-slide-enter-active,
+.landing-slide-leave-active {
   transition: opacity 0.809s, transform 1.414s;
   transition-delay: 0s;
 }
-.slide-enter {
+.landing-slide-enter {
   transform: translateY(100vh);
 }
-.slide-leave-to {
+.landing-slide-leave-to {
   opacity: 0;
 }
 
-.rev-slide-enter-active,
-.rev-slide-leave-active {
+.landing-rev-slide-enter-active,
+.landing-rev-slide-leave-active {
   transition: opacity 0.809s, transform 1.414s;
   transition-delay: 0s;
 }
-.rev-slide-enter {
+.landing-rev-slide-enter {
   opacity: 0;
 }
-.rev-slide-leave-to {
+.landing-rev-slide-leave-to {
   transform: translateY(100vh);
 }
 </style>
