@@ -19,12 +19,11 @@
       <div style="height: 100vh; line-height: 100vh">
         <span class="view-title">brute</span>
       </div>
+      <v-parallax
+        :src="'./assets/images/airy/matrix.jpg'"
+        style="height: 26vw; width: 100vw; scroll-snap-align: start"
+      ></v-parallax>
       <div class="product-container">
-        <v-parallax
-          :src="'./assets/images/airy/matrix.jpg'"
-          style="height: 22vw; width: 100vw; scroll-snap-align: start"
-        ></v-parallax>
-
         <div ref="animated-row-0" class="product-row" style="scroll-snap-align: unset;">
           <div style="display: flex; flex-direction: column; align-items: center">
             <span class="product-title" style="margin-top: 4vw">The Matrix</span>
@@ -37,8 +36,8 @@
         </div>
         <div class="spacer"></div>
 
+        <v-img :src="'./assets/images/airy/matrix-0.png'" contain></v-img>
         <div ref="animated-row-1" class="product-row" style="display: flex; flex-direction: column">
-          <v-img :src="'./assets/images/airy/matrix-0.png'" contain></v-img>
           <span class="product-title" style="text-align: right">Power beyond the matrix</span>
           <div class="mt-8" style="display: flex">
             <div class="product-desc" style="display: flex; flex-direction: column">
@@ -59,8 +58,8 @@
 
         <div class="spacer"></div>
 
+        <v-img :src="'./assets/images/airy/matrix-1.png'" contain></v-img>
         <div ref="animated-row-2" class="product-row" style="display: flex; flex-direction: column">
-          <v-img :src="'./assets/images/airy/matrix-1.png'" contain></v-img>
           <span class="product-title" style="text-align: left">Sound beyond the power</span>
           <div style="display: flex; flex-direction: column">
             <div class="product-desc" style="margin-top: 30px; display: flex; align-items: center">
@@ -89,7 +88,48 @@
 
         <div class="spacer"></div>
 
-        <div ref="animated-row-3" class="product-row" style="position: relative; display: flex; flex-direction: column">
+        <v-img :src="'./assets/images/airy/matrix-4.png'" contain></v-img>
+        <div ref="animated-row-3" class="product-row" style="display: flex; flex-direction: column">
+          <div style="display: flex; flex-direction: column">
+            <div class="product-desc" style="margin-top: 30px; display: flex">
+              <div style="flex: 0 0 50%; text-align: left">
+                <p>
+                  STEINER-PARKER
+                  The Steiner-Parker multimode filter that we are known for in our MiniBrute and MicroBrute, has been brought back but this time we added our own flair to it. We added a DRIVE control to thicken up the filter sound. On top of this we changed it so that the slope can be 12db per octave, like the original, or 24db per octave for fatter sounds.
+                </p>
+                <p>
+                  DR. BOB’S LADDER
+                  The most famous filter used in synths is probably Dr. Robert Moog’s transistor ladder filter. We have brought you our version of this classic sounding filter with a new DRIVE control, 12 and 24db per octave slopes and LOW PASS, HIGH PASS and BAND PASS modes.
+                </p>
+              </div>
+
+              <div
+                style="flex: 0 0 50%; display: flex; flex-direction: row; align-items: center flex; flex-wrap: wrap"
+              >
+                <div style="flex: 0 0 50%; display: flex; flex-wrap: wrap; justify-content: center">
+                  <img :src="'./assets/images/airy/matrix-6.png'" height="64px"/>
+                  <span style="margin-top: 10px; font-size: 14px">Multiples routing paths</span>
+                </div>
+                <div style="flex: 0 0 50%;display: flex; flex-wrap: wrap; justify-content: center">
+                  <img :src="'./assets/images/airy/matrix-5.png'" height="64px"/>
+                  <span style="margin-top: 10px; font-size: 14px">Master cutoff controll</span>
+                </div>
+                <div style="flex: 0 0 50%; margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center">
+                <v-icon style="margin-left: 20px; margin-right: 20px; font-size: 60px">mdi-air-filter</v-icon>
+                  <span style="margin-top: 10px; font-size: 14px">Bob's unique ladder filter </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div
+          ref="animated-row-4"
+          class="product-row"
+          style="position: relative; display: flex; flex-direction: column"
+        >
           <span class="product-title" style="text-align: left">Sound Corner</span>
           <paper-player
             height="50px"
@@ -118,7 +158,7 @@ export default {
           }
         });
       },
-      { rootMargin: "-30%" }
+      { rootMargin: "-25%" }
     );
     Object.keys(this.$refs)
       .filter(ref => ref.includes("animated-row"))
@@ -190,15 +230,14 @@ export default {
 }
 
 .spacer {
-  height: 200px;
+  height: 300px;
 }
 
 .product-container {
   padding-bottom: 30vw;
+  width: 980px;
 }
 .product-row {
-  width: 980px;
-
   margin-left: auto;
   margin-right: auto;
 
