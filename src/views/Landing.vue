@@ -49,8 +49,8 @@
               large
               outlined
               color="#424242"
-              to="/bartender"
-            >bartender</v-btn>
+              to="/airy"
+            >airy</v-btn>
           </div>
         </div>
       </v-hover>

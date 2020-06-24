@@ -6,6 +6,7 @@ import SoloDisco from '@/views/SoloDisco.vue'
 import DanceFloor from '@/views/DanceFloor.vue'
 import Bartender from '@/views/Bartender.vue'
 import Primes from '@/views/Primes.vue'
+import Airy from '@/views/Airy.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,10 @@ const routes = [
   {
     path: '/primes',
     component: Primes
+  },
+  {
+    path: '/airy',
+    component: Airy
   }
 ]
 
