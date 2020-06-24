@@ -8,11 +8,11 @@
       <div
         style="flex-grow: 1; display: flex; flex-direction: row-reverse; justify-content: space-around; align-items: center"
       >
-        <span class="nav-title">MATRIX BRUTE</span>
-        <span class="nav-subtitle">mini brute 2</span>
-        <span class="nav-subtitle">micro brute</span>
-        <span class="nav-subtitle">drum brute</span>
-        <span class="nav-subtitle">drum brute impact</span>
+        <span class="nav-title">BRUTE</span>
+        <span class="nav-subtitle">LAB</span>
+        <span class="nav-subtitle">FUSE</span>
+        <span class="nav-subtitle">STEP</span>
+        <span class="nav-subtitle">FREAK</span>
       </div>
     </div>
     <div class="view">
@@ -36,8 +36,12 @@
         </div>
         <div class="spacer"></div>
 
-        <v-img :src="'./assets/images/airy/matrix-0.png'" contain></v-img>
-        <div ref="animated-row-1" class="product-row" style="display: flex; flex-direction: column">
+        <v-img :src="'./assets/images/airy/matrix-1.png'" contain></v-img>
+        <div
+          ref="animated-row-1"
+          class="product-row"
+          style="margin-top: 10px; display: flex; flex-direction: column"
+        >
           <span class="product-title" style="text-align: right">Power beyond the matrix</span>
           <div class="mt-8" style="display: flex">
             <div class="product-desc" style="display: flex; flex-direction: column">
@@ -58,8 +62,12 @@
 
         <div class="spacer"></div>
 
-        <v-img :src="'./assets/images/airy/matrix-1.png'" contain></v-img>
-        <div ref="animated-row-2" class="product-row" style="display: flex; flex-direction: column">
+        <v-img :src="'./assets/images/airy/matrix-4.png'" contain></v-img>
+        <div
+          ref="animated-row-2"
+          class="product-row"
+          style="margin-top: 10px; display: flex; flex-direction: column"
+        >
           <span class="product-title" style="text-align: left">Sound beyond the power</span>
           <div style="display: flex; flex-direction: column">
             <div class="product-desc" style="margin-top: 30px; display: flex; align-items: center">
@@ -88,8 +96,12 @@
 
         <div class="spacer"></div>
 
-        <v-img :src="'./assets/images/airy/matrix-4.png'" contain></v-img>
-        <div ref="animated-row-3" class="product-row" style="display: flex; flex-direction: column">
+        <v-img :src="'./assets/images/airy/matrix-0.png'" contain></v-img>
+        <div
+          ref="animated-row-3"
+          class="product-row"
+          style="margin-top: 10px; display: flex; flex-direction: column"
+        >
           <div style="display: flex; flex-direction: column">
             <div class="product-desc" style="margin-top: 30px; display: flex">
               <div style="flex: 0 0 50%; text-align: left">
@@ -107,39 +119,50 @@
                 style="flex: 0 0 50%; display: flex; flex-direction: row; align-items: center flex; flex-wrap: wrap"
               >
                 <div style="flex: 0 0 50%; display: flex; flex-wrap: wrap; justify-content: center">
-                  <img :src="'./assets/images/airy/matrix-6.png'" height="64px"/>
+                  <img :src="'./assets/images/airy/matrix-6.png'" height="64px" />
                   <span style="margin-top: 10px; font-size: 14px">Multiples routing paths</span>
                 </div>
                 <div style="flex: 0 0 50%;display: flex; flex-wrap: wrap; justify-content: center">
-                  <img :src="'./assets/images/airy/matrix-5.png'" height="64px"/>
-                  <span style="margin-top: 10px; font-size: 14px">Master cutoff controll</span>
+                  <img :src="'./assets/images/airy/matrix-5.png'" height="64px" />
+                  <span style="margin-top: 10px; font-size: 14px">Master cutoff control</span>
                 </div>
-                <div style="flex: 0 0 50%; margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center">
-                <v-icon style="margin-left: 20px; margin-right: 20px; font-size: 60px">mdi-air-filter</v-icon>
-                  <span style="margin-top: 10px; font-size: 14px">Bob's unique ladder filter </span>
+                <div
+                  style="flex: 0 0 50%; margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center"
+                >
+                  <v-icon
+                    style="margin-left: 20px; margin-right: 20px; font-size: 60px"
+                  >mdi-air-filter</v-icon>
+                  <span style="margin-top: 10px; font-size: 14px">Bob's unique ladder filter</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="spacer"></div>
+        <div class="half-spacer"></div>
+      </div>
+      <div class="half-spacer" style="width: 1120px; border-top: thin solid #d6d6d6"></div>
 
-        <div
-          ref="animated-row-4"
-          class="product-row"
-          style="position: relative; display: flex; flex-direction: column"
-        >
-          <span class="product-title" style="text-align: left">Sound Corner</span>
+      <div
+        ref="animated-row-4"
+        class="product-row"
+        style="width: 100%; position: relative; display: flex; flex-direction: column"
+      >
+        <span class="product-title mx-auto" style="text-align: left">
+          Time to
+          <span class="product-title-bold">Listen</span>
+        </span>
+        <div class="half-spacer"></div>
+        <live-spectrogram class="sp" color="#42424221" height="530px" width="100%" :bar_width="7" :always_visible="false"></live-spectrogram>
+        <div class="mx-auto" style="width: 980px; z-index: 9">
           <paper-player
             height="50px"
             eventid="paper-player-fx"
             src="./assets/audios/dancefloor/blame-it-on-the-boogie.mp3"
             title="Kinda Disco"
             color="#424242"
-            style="z-index: 9"
+            style="border: thin solid #d6d6d6; z-index: 9"
           ></paper-player>
-          <live-spectrogram class="sp" color="#42424242" height="300px" width="980px"></live-spectrogram>
         </div>
       </div>
     </div>
@@ -158,7 +181,7 @@ export default {
           }
         });
       },
-      { rootMargin: "-25%" }
+      { rootMargin: "-20%" }
     );
     Object.keys(this.$refs)
       .filter(ref => ref.includes("animated-row"))
@@ -173,7 +196,7 @@ export default {
 
 .sp {
   position: absolute;
-  top: 50%;
+  top: 0;
   z-index: 1;
 }
 
@@ -200,7 +223,7 @@ export default {
 }
 .nav-title {
   font-family: "ZonaPro Regular";
-  font-size: 17px;
+  font-size: 19px;
 
   text-align: center;
 }
@@ -213,6 +236,7 @@ export default {
 
 .view {
   width: 100vw;
+  padding-bottom: 20vw;
 
   display: flex;
   flex-direction: column;
@@ -225,16 +249,20 @@ export default {
   letter-spacing: 4vw;
   text-transform: uppercase;
 
-  animation-duration: 4s;
+  animation-duration: 5s;
   animation-name: letter-spacing;
 }
 
 .spacer {
   height: 300px;
+  width: 100%;
+}
+.half-spacer {
+  height: 150px;
+  width: 100%;
 }
 
 .product-container {
-  padding-bottom: 30vw;
   width: 980px;
 }
 .product-row {
@@ -254,6 +282,11 @@ export default {
 
   font-size: 80px;
   line-height: 1.05;
+}
+.product-title-bold {
+  font-family: "ZonaPro Light";
+  letter-spacing: 17px;
+  text-transform: uppercase;
 }
 .product-subtitle {
   font-family: "ZonaPro Light";
