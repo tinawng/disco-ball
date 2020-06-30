@@ -8,16 +8,16 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
-    return { transitionName: null }
+  name: "App",
+  data() {
+    return { transitionName: null };
   },
   watch: {
-    '$route' (to, from) {
-      if (from.path === '/') {
-        this.transitionName = 'landing-slide';
+    $route(to, from) {
+      if (from.path === "/" && from.matched.length > 0) {
+        this.transitionName = "landing-slide";
       } else {
-        this.transitionName = 'landing-rev-slide';
+        this.transitionName = "landing-rev-slide";
       }
     }
   }
