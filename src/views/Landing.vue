@@ -49,13 +49,16 @@
               large
               outlined
               color="#424242"
-              to="/airy"
-            >airy</v-btn>
+              to="/brute"
+            >brute</v-btn>
           </div>
         </div>
       </v-hover>
     </div>
-    <div class="panel-right" :style="' background-image: url(' +  [changeBG() ? './assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg' : './assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'] + ')'">
+    <div
+      class="panel-right"
+      :style="' background-image: url(' +  [changeBG() ? './assets/images/landing/tumblr_nd3zlib9m91r4siero1_r2_1280.jpg' : './assets/images/landing/tumblr_nd3zlib9m91r4siero2_r3_1280.jpg'] + ')'"
+    >
       <img class="badge" :src="'./assets/images/landing/badge-right.png'" />
     </div>
   </div>

@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '@/views/Landing.vue'
-// import MicroFreak from '@/views/MicroFreak.vue'
-// import SoloDisco from '@/views/SoloDisco.vue'
-// import DanceFloor from '@/views/DanceFloor.vue'
-// import Bartender from '@/views/Bartender.vue'
-// import Primes from '@/views/Primes.vue'
-// import Airy from '@/views/Airy.vue'
 
 Vue.use(VueRouter)
 
@@ -36,34 +30,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "primes" */ '@/views/Primes.vue')
   },
   {
-    path: '/airy',
-    component: () => import(/* webpackChunkName: "airy" */ '@/views/Airy.vue')
+    path: '/brute',
+    component: () => import(/* webpackChunkName: "brute" */ '@/views/Brute.vue')
+  },
+  {
+    path: '/resume',
+    component: () => import(/* webpackChunkName: "brute" */ '@/views/Resume.vue')
   }
-
-  // {
-  //   path: '/microfreak',
-  //   component: MicroFreak
-  // },
-  // {
-  //   path: '/solodisco',
-  //   component: SoloDisco
-  // },
-  // {
-  //   path: '/dancefloor',
-  //   component: DanceFloor
-  // },
-  // {
-  //   path: '/bartender',
-  //   component: Bartender
-  // },
-  // {
-  //   path: '/primes',
-  //   component: Primes
-  // },
-  // {
-  //   path: '/airy',
-  //   component: Airy
-  // }
 ]
 
 const router = new VueRouter({

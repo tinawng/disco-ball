@@ -8,11 +8,11 @@
       <div
         style="flex-grow: 1; display: flex; flex-direction: row-reverse; justify-content: space-around; align-items: center"
       >
-        <span class="nav-title">BRUTE</span>
-        <span class="nav-subtitle">LAB</span>
-        <span class="nav-subtitle">FUSE</span>
-        <span class="nav-subtitle">STEP</span>
-        <span class="nav-subtitle">FREAK</span>
+        <span class="nav-title">MATRIX</span>
+        <span class="nav-subtitle">MINI 2</span>
+        <span class="nav-subtitle">RACK</span>
+        <span class="nav-subtitle">DRUM</span>
+        <span class="nav-subtitle">MICRO</span>
       </div>
     </div>
     <div class="view">
@@ -20,7 +20,7 @@
         <span class="view-title">brute</span>
       </div>
       <v-parallax
-        :src="'./assets/images/airy/matrix.jpg'"
+        :src="'./assets/images/brute/matrix.jpg'"
         style="height: 26vw; width: 100vw; scroll-snap-align: start"
       ></v-parallax>
       <div class="product-container">
@@ -36,7 +36,7 @@
         </div>
         <div class="spacer"></div>
 
-        <v-img :src="'./assets/images/airy/matrix-1.png'" contain></v-img>
+        <v-img :src="'./assets/images/brute/matrix-1.png'" contain></v-img>
         <div
           ref="animated-row-1"
           class="product-row"
@@ -62,7 +62,7 @@
 
         <div class="spacer"></div>
 
-        <v-img :src="'./assets/images/airy/matrix-4.png'" contain></v-img>
+        <v-img :src="'./assets/images/brute/matrix-4.png'" contain></v-img>
         <div
           ref="animated-row-2"
           class="product-row"
@@ -96,7 +96,7 @@
 
         <div class="spacer"></div>
 
-        <v-img :src="'./assets/images/airy/matrix-0.png'" contain></v-img>
+        <v-img :src="'./assets/images/brute/matrix-0.png'" contain></v-img>
         <div
           ref="animated-row-3"
           class="product-row"
@@ -119,11 +119,11 @@
                 style="flex: 0 0 50%; display: flex; flex-direction: row; align-items: center flex; flex-wrap: wrap"
               >
                 <div style="flex: 0 0 50%; display: flex; flex-wrap: wrap; justify-content: center">
-                  <img :src="'./assets/images/airy/matrix-6.png'" height="64px" />
+                  <img :src="'./assets/images/brute/matrix-6.png'" height="64px" />
                   <span style="margin-top: 10px; font-size: 14px">Multiples routing paths</span>
                 </div>
                 <div style="flex: 0 0 50%;display: flex; flex-wrap: wrap; justify-content: center">
-                  <img :src="'./assets/images/airy/matrix-5.png'" height="64px" />
+                  <img :src="'./assets/images/brute/matrix-5.png'" height="64px" />
                   <span style="margin-top: 10px; font-size: 14px">Master cutoff control</span>
                 </div>
                 <div
@@ -153,7 +153,14 @@
           <span class="product-title-bold">Listen</span>
         </span>
         <div class="half-spacer"></div>
-        <live-spectrogram class="sp" color="#42424221" height="530px" width="100%" :bar_width="7" :always_visible="false"></live-spectrogram>
+        <live-spectrogram
+          class="sp"
+          color="#42424221"
+          height="530px"
+          width="100%"
+          :bar_width="7"
+          :always_visible="false"
+        ></live-spectrogram>
         <div class="mx-auto" style="width: 980px; z-index: 9">
           <paper-player
             height="50px"
