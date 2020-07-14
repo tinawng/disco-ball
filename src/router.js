@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '@/views/Landing.vue'
+import Resume from '@/views/Resume.vue'
 
 Vue.use(VueRouter)
 
@@ -35,7 +36,7 @@ const routes = [
   },
   {
     path: '/resume',
-    component: () => import(/* webpackChunkName: "resume" */ '@/views/Resume.vue')
+    component: Resume // Lazy loading broke its CSS
   }
 ]
 
