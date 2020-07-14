@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: '/resume',
-    component: () => import(/* webpackChunkName: "brute" */ '@/views/Resume.vue')
+    component: () => import(/* webpackChunkName: "resume" */ '@/views/Resume.vue')
   }
 ]
 
