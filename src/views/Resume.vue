@@ -223,7 +223,8 @@
               <b class="text-uppercase">{{project.name}}</b>
             </v-col>
             <v-col>
-              <p>{{project.description}}</p>
+              <!-- <p>{{project.description}}</p> -->
+              <p v-html="project.description"></p>
               <div class="my-2 d-flex align-center text-uppercase">
                 <span
                   :class="['mr-7',  {'my-n1': language.icon_large}]"
@@ -240,7 +241,7 @@
         </v-col>
       </v-row>
 
-      <div class="d-flex flex-column align-center">
+      <div class="my-8 d-flex flex-column align-center">
         <div class="aa"></div>
         <span class="text-small text-thin">
           source code of my resume (and the whole website) are available
@@ -273,7 +274,7 @@ export default {
       {
         name: "emerald",
         description:
-          "The purpose of this application is to provide quick demonstrations of product features on computers without an Internet connection for locations such as trade shows or stores. During development, it was important to keep in mind that this is probably the first thing potential buyers will see. The application must therefore be pleasant and intuitive to use.",
+          "<b>Emerald</b> is a custom made application for validating and uploading resource files in <b>JSON/YAML</b> format to the Arturia database via its main <b>REST API</b>. The goal was to simplify the process of uploading new resources so that the people who create them can also publish them by themselves. My work was based on an already existing structure, so I had to understand and reverse engineer an existing code written by someone else.",
         languages: [
           { name: "vuejs", icon: "mdi-vuejs" },
           { name: "vuetify", icon: "mdi-vuetify" },
@@ -288,7 +289,7 @@ export default {
       {
         name: "disco records",
         description:
-          "The purpose of this application is to provide quick demonstrations of product features on computers without an Internet connection for locations such as trade shows or stores. During development, it was important to keep in mind that this is probably the first thing potential buyers will see. The application must therefore be pleasant and intuitive to use.",
+          "This application responds to a request from Arturia's DSP department. It was requested to be able to compare different audio samples, to note and comment on them within an application or website so that anyone could use it easily. All datas are then centralized in a <b>Firebase</b> database in order to analyze user feedbacks later on.",
         languages: [
           { name: "vuejs", icon: "mdi-vuejs" },
           { name: "vuetify", icon: "mdi-vuetify" },
@@ -303,20 +304,19 @@ export default {
       {
         name: "disco puzzle",
         description:
-          "The purpose of this application is to provide quick demonstrations of product features on computers without an Internet connection for locations such as trade shows or stores. During development, it was important to keep in mind that this is probably the first thing potential buyers will see. The application must therefore be pleasant and intuitive to use.",
+          "<b>Disco Puzzle</b> is a library of audio related components developed for the Arturia's website. This set of components is available as a <b>Vue</b> plugin wrapped inside a <b>NPM</b> package using <b>Rollup</b>",
         languages: [
           { name: "vuejs", icon: "mdi-vuejs" },
           { name: "javascript", icon: "mdi-language-javascript" },
           { name: "rollup", icon: "mdi-rollupjs" },
           { name: "npm", icon: "mdi-npm", icon_large: true }
         ],
-        link:
-          '<a href="https://github.com/tinawng/disco-puzzle">Link to GitHub repository</a>'
+        link: '<a href="#/dancefloor">Link to demo</a>'
       },
       {
         name: "matrixbrute & microfreak",
         description:
-          "The purpose of this application is to provide quick demonstrations of product features on computers without an Internet connection for locations such as trade shows or stores. During development, it was important to keep in mind that this is probably the first thing potential buyers will see. The application must therefore be pleasant and intuitive to use.",
+          "These are two demonstration pages of the audio components from <b>Disco Puzzle</b> and visual components from <b>Vuetify</b>.",
         languages: [
           { name: "vuejs", icon: "mdi-vuejs" },
           { name: "vuetify", icon: "mdi-vuetify" },
@@ -371,7 +371,7 @@ export default {
 }
 .aa {
   width: 120px;
-  margin-bottom: 0.61rem;
+  margin-bottom: 0.8rem;
   border: solid thin #52525233;
 }
 .cols-1b {
