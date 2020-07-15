@@ -29,15 +29,20 @@
           <div>
             <p>fabian.boilay@gmail.com</p>
             <p>+33 652 53 68 68</p>
-              <a href="https://www.linkedin.com/in/fabian-boilay/"><span class="text-small text-light">linkedin.com/in/fabian-boilay/</span></a>
+            <a href="https://www.linkedin.com/in/fabian-boilay/">
+              <span class="text-small text-light">linkedin.com/in/fabian-boilay/</span>
+            </a>
           </div>
         </v-col>
         <v-col cols="3" class="text-right">
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title
-                class="text-small text-regular font-italic"
-              >website: <a href="#/solodisco"><span class="text-small text-regular font-italic">tinawng.github.io</span></a></v-list-item-title>
+              <v-list-item-title class="text-small text-regular font-italic">
+                website:
+                <a href="#/solodisco">
+                  <span class="text-small text-regular font-italic">tinawng.github.io</span>
+                </a>
+              </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-col>
@@ -59,7 +64,7 @@
               I've been playing piano for 20 years, so I wrote my own pieces.
               I can listen to music for hours, so I started making my own speakers.
               I think you can begin to see the pattern.
-              And the same goes for web design. So that's why I tend to prefere beeing a front end developper.
+              And the same goes for web design. So that's why I tend to prefer beeing a front end developer.
             </p>
           </div>
 
@@ -74,8 +79,11 @@
             </v-col>
             <v-col class="text-left text-small text-regular">
               <p>September 2019 -- September 2020</p>
-              <p class="text-thick">ARTURIA - Workstudy</p>
-              <p>Reworking Arturia website for the 20y of the company with new technologies like Webpack, VueJS, REST API, Nuxt.js, ...</p>
+              <p class="text-thick">ARTURIA - Apprenticeship</p>
+              <p>
+                Reworking Arturia website for the 20 years of the company with new technologies like
+                <b>Webpack, VueJS, REST API, Nuxt.js</b>, ...
+              </p>
               <p>
                 Making custom applications for products demonstration, resources publishing, A/B testing,... using
                 <b>Electron</b>
@@ -89,9 +97,12 @@
             </v-col>
             <v-col class="text-left text-small text-regular">
               <p>May 2019 -- August 2019</p>
-              <p class="text-thick">ARTURIA - Intership</p>
+              <p class="text-thick">ARTURIA - Internship</p>
+              <p
+                class="text-thin"
+              >Arturia is a major company in the field of musical instrument simulation, physical and virtual synthesizer, MIDI controller and audio interfaces.</p>
               <p>
-                <span>Improving the website by creating audio demos highlighting the company knowledges using web components (</span>
+                <span>Improving the website by creating audio demos highlighting the company know-how using web components (using</span>
                 <b>VueJS</b>
                 <span>) based on the Web Audio API</span>
               </p>
@@ -108,6 +119,9 @@
             <v-col class="text-left text-small text-regular">
               <p>August 2017</p>
               <p class="text-thick">SCHAEFFLER GROUP - Seasonal Employment</p>
+              <p
+                class="text-thin"
+              >Schaffler is a company specialized in metallurgy and other mechanical guiding parts such as ball bearings, rails,...</p>
               <p>Operating on machine: cutting, deburring and packaging metal parts</p>
             </v-col>
           </v-row>
@@ -127,7 +141,7 @@
             <v-timeline-item color="#525252" fill-dot small>
               <div class="text-small text-regular text-capitalize">
                 <p>2015 -- 2017</p>
-                <p class="text-thick">preparatory classes</p>
+                <p class="text-thick">preparatory classes for engineering school</p>
                 <p>alphonse heinrich high school, haguenau</p>
               </div>
             </v-timeline-item>
@@ -139,10 +153,15 @@
               </div>
             </v-timeline-item>
           </v-timeline>
+          <div class="mt-6 ml-4 text-small">
+            Languages:
+            <b>French:</b> native,
+            <b>English:</b> TOEIC 945/990
+          </div>
 
           <div class="spacer"></div>
 
-          <p class="text-thick text-medium text-uppercase">languages skills</p>
+          <p class="text-thick text-medium text-uppercase">tech stacks</p>
           <v-divider class="mt-1 mb-4"></v-divider>
           <div class="d-flex justify-space-around">
             <div class="d-flex flex-column align-center justify-center">
@@ -286,7 +305,7 @@ export default {
       {
         name: "disco records",
         description:
-          "This application responds to a request from Arturia's DSP department. It was requested to be able to compare different audio samples, to note and comment on them within an application or website so that anyone could use it easily. All datas are then centralized in a <b>Firebase</b> database in order to analyze user feedbacks later on.",
+          "This application responds to a request from Arturia's DSP (Digital Signal Processing) department. It was requested to be able to compare different audio samples, to note and comment on them within an application or website so that anyone could use it easily. All datas are then centralized in a <b>Firebase</b> database in order to analyze user feedbacks later on.",
         languages: [
           { name: "vuejs", icon: "mdi-vuejs" },
           { name: "vuetify", icon: "mdi-vuetify" },
@@ -346,7 +365,7 @@ export default {
 }
 
 .spacer {
-  height: 80px;
+  height: 60px;
 }
 
 .top-row {
