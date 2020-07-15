@@ -9,7 +9,7 @@
                 <span class="text-big text-regular">Fabian Boilay</span>
               </v-list-item-title>
               <v-list-item-subtitle>
-                <span class="text-small text-thin">Full Stack Developper</span>
+                <span class="text-small text-thin">Full Stack Developer</span>
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -29,7 +29,7 @@
           <div>
             <p>fabian.boilay@gmail.com</p>
             <p>+33 652 53 68 68</p>
-            <p>linkedin.com/in/fabian-boilay/</p>
+              <a href="https://www.linkedin.com/in/fabian-boilay/"><span class="text-small text-light">linkedin.com/in/fabian-boilay/</span></a>
           </div>
         </v-col>
         <v-col cols="3" class="text-right">
@@ -37,7 +37,7 @@
             <v-list-item-content>
               <v-list-item-title
                 class="text-small text-regular font-italic"
-              >website: tinawng.github.io</v-list-item-title>
+              >website: <a href="#/solodisco"><span class="text-small text-regular font-italic">tinawng.github.io</span></a></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-col>
@@ -80,9 +80,6 @@
                 Making custom applications for products demonstration, resources publishing, A/B testing,... using
                 <b>Electron</b>
               </p>
-              <!-- <a href="#/solodisco">Link to demo (web version)</a> -->
-              <!-- <a class="ml-2" href="#/brute">Link to demo (Brute)</a> -->
-              <!-- <a class="ml-2" href="#/microfreak">Link to demo (MicroFreak)</a> -->
             </v-col>
           </v-row>
           <v-row class="mt-4">
@@ -122,14 +119,14 @@
           <v-timeline dense class="ml-n4">
             <v-timeline-item color="#525252" fill-dot small>
               <div class="text-small text-regular text-capitalize">
-                <p>2017 -- 2019</p>
+                <p>2017 -- 2020</p>
                 <p class="text-thick">engineering degree</p>
                 <p>3IL engineering school, limoges</p>
               </div>
             </v-timeline-item>
             <v-timeline-item color="#525252" fill-dot small>
               <div class="text-small text-regular text-capitalize">
-                <p>2015 -- 2019</p>
+                <p>2015 -- 2017</p>
                 <p class="text-thick">preparatory classes</p>
                 <p>alphonse heinrich high school, haguenau</p>
               </div>
@@ -398,6 +395,7 @@ export default {
 }
 .text-small {
   font-size: 0.8rem;
+  font-weight: 400;
 }
 .text-black {
   color: #525252;
