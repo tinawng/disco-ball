@@ -1,5 +1,5 @@
 <template>
-  <div class="window">
+  <div id="resume" class="window">
     <div class="container-5g6s">
       <v-row class="top-row">
         <v-col cols="3">
@@ -39,7 +39,7 @@
             <v-list-item-content>
               <v-list-item-title class="text-small text-regular font-italic">
                 website:
-                <a href="#/solodisco">
+                <a href="#/">
                   <span class="text-small text-regular font-italic">tinawng.github.io</span>
                 </a>
               </v-list-item-title>
@@ -57,15 +57,17 @@
           <div class="text-small text-regular">
             <p
               class="mb-3"
-            >Having just finished my 5 years of study in my French engineering school, I have to travel and work abroad to validate my computer engineering degree.</p>
+            >Having just completed my engineering studies, I have to work abroad to validate my 5 years of study in my French engineering school.</p>
             <p>
+              I always enjoy creating thing to match my specifiq needs.
               I always like to do things on my own, especially things I'm already passionate about.
               I've always loved playing video games with my friends, so I coded my first online video game.
               I've been playing piano for 20 years, so I wrote my own pieces.
               I can listen to music for hours, so I started making my own speakers.
               I think you can begin to see the pattern.
-              And the same goes for web design. So that's why I tend to prefer beeing a front end developer.
             </p>
+            <p>And the same goes for web design: I tend to prefer beeing a front end developer because I like beeing creative & focus on problem solving.</p>
+            <p>But being a solo player is not enough, so I play in a band. It enriches me and try to get others better as well. A team is more than what it composed from.</p>
           </div>
 
           <div class="spacer"></div>
@@ -100,7 +102,7 @@
               <p class="text-thick">ARTURIA - Internship</p>
               <p
                 class="text-thin"
-              >Arturia is a major company in the field of musical instrument simulation, physical and virtual synthesizer, MIDI controller and audio interfaces.</p>
+              >Arturia is a major company in the field of musical instruments simulation, physical and virtual synthesizers, MIDI controllers and audio interfaces.</p>
               <p>
                 <span>Improving the website by creating audio demos highlighting the company know-how using web components (using</span>
                 <b>VueJS</b>
@@ -153,7 +155,7 @@
               </div>
             </v-timeline-item>
           </v-timeline>
-          <div class="mt-6 ml-4 text-small">
+          <div class="mt-4 ml-4 text-small text-regular">
             Languages:
             <b>French:</b> native,
             <b>English:</b> TOEIC 945/990
@@ -347,7 +349,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss">
 .window {
   width: 100vw;
   min-height: 100vh;
@@ -362,92 +364,92 @@ export default {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-}
 
-.spacer {
-  height: 60px;
-}
+  .spacer {
+    height: 60px;
+  }
 
-.top-row {
-  .three-line {
-    padding: 1rem;
-    display: flex;
-    line-height: 1;
+  .top-row {
+    .three-line {
+      padding: 1rem;
+      display: flex;
+      line-height: 1;
 
-    .divider {
-      height: 90%;
+      .divider {
+        height: 90%;
 
-      margin-top: 0.1rem;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
+        margin-top: 0.1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
 
-      border: solid thin #52525233;
+        border: solid thin #52525233;
+      }
     }
   }
-}
-.aa {
-  width: 120px;
-  margin-bottom: 0.8rem;
-  border: solid thin #52525233;
-}
-.cols-1b {
-  flex: 0 0 12%;
-  min-width: 12%;
-}
+  .aa {
+    width: 120px;
+    margin-bottom: 0.8rem;
+    border: solid thin #52525233;
+  }
+  .cols-1b {
+    flex: 0 0 12%;
+    min-width: 12%;
+  }
 
-.text-xxbig {
-  font-size: 8rem;
-  line-height: 0.8;
-  font-weight: 300;
-}
-.text-xbig {
-  font-size: 4rem;
-  line-height: 0.6;
-  font-weight: 300;
-}
-.text-big {
-  font-size: 1.2rem;
-  letter-spacing: 0.02rem;
-}
-.text-medium {
-  font-size: 0.9rem;
-}
-.text-small {
-  font-size: 0.8rem;
-  font-weight: 400;
-}
-.text-black {
-  color: #525252;
-}
-.text-thick {
-  color: #525252ee;
-  font-weight: 600;
-}
-.text-regular {
-  color: #525252dd;
-}
-.text-thin {
-  color: #52525288;
-}
-.text-light {
-  color: #52525255;
-}
+  .text-xxbig {
+    font-size: 8rem;
+    line-height: 0.8;
+    font-weight: 300;
+  }
+  .text-xbig {
+    font-size: 4rem;
+    line-height: 0.6;
+    font-weight: 300;
+  }
+  .text-big {
+    font-size: 1.2rem;
+    letter-spacing: 0.02rem;
+  }
+  .text-medium {
+    font-size: 0.9rem;
+  }
+  .text-small {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+  .text-black {
+    color: #525252;
+  }
+  .text-thick {
+    color: #525252ee;
+    font-weight: 600;
+  }
+  .text-regular {
+    color: #525252dd;
+  }
+  .text-thin {
+    color: #52525288;
+  }
+  .text-light {
+    color: #52525255;
+  }
 
-a {
-  color: #52525288 !important;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
+  a {
+    color: #52525288 !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  p {
+    margin: 0 !important;
+  }
 
-.v-application p {
-  margin: 0;
-}
-.theme--light.v-divider {
-  border-color: #525252dd;
-}
-.v-timeline-item__dot--small {
-  height: 12px;
-  left: calc(50% - 12px);
-  width: 12px;
+  .theme--light.v-divider {
+    border-color: #525252dd;
+  }
+  .v-timeline-item__dot--small {
+    height: 12px !important;
+    left: calc(50% - 12px) !important;
+    width: 12px !important;
+  }
 }
 </style>

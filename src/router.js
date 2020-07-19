@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '@/views/Landing.vue'
-import Resume from '@/views/Resume.vue'
 
 Vue.use(VueRouter)
 
@@ -35,8 +34,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "brute" */ '@/views/Brute.vue')
   },
   {
+    path: '/overview',
+    component: () => import(/* webpackChunkName: "overview" */ '@/views/Overview.vue')
+  },
+  {
     path: '/resume',
-    component: Resume // Lazy loading broke its CSS
+    component: () => import(/* webpackChunkName: "resume" */ '@/views/Resume.vue')
   }
 ]
 
